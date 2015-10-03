@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @event_instance.event %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @event_instance.completed %>
+</p>
+
+<p>
+  <strong>Dismissed:</strong>
+  <%= @event_instance.dismissed %>
+</p>
+
+<p>
+  <strong>Scheduled start:</strong>
+  <%= @event_instance.scheduled_start %>
+</p>
+
+<p>
+  <strong>Scheduled end:</strong>
+  <%= @event_instance.scheduled_end %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event_instance.location %>
+</p>
+
+<%= link_to 'Edit', edit_event_instance_path(@event_instance) %> |
+<%= link_to 'Back', event_instances_path %>

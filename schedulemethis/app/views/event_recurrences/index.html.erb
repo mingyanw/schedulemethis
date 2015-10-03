@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Event Recurrences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Even weeks</th>
+      <th>Odd weeks</th>
+      <th>Yearly</th>
+      <th>Months</th>
+      <th>Days</th>
+      <th>Auto dismiss</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_recurrences.each do |event_recurrence| %>
+      <tr>
+        <td><%= event_recurrence.event %></td>
+        <td><%= event_recurrence.even_weeks %></td>
+        <td><%= event_recurrence.odd_weeks %></td>
+        <td><%= event_recurrence.yearly %></td>
+        <td><%= event_recurrence.months %></td>
+        <td><%= event_recurrence.days %></td>
+        <td><%= event_recurrence.auto_dismiss %></td>
+        <td><%= link_to 'Show', event_recurrence %></td>
+        <td><%= link_to 'Edit', edit_event_recurrence_path(event_recurrence) %></td>
+        <td><%= link_to 'Destroy', event_recurrence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event recurrence', new_event_recurrence_path %>

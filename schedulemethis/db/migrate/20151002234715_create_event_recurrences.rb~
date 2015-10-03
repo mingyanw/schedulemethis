@@ -1,0 +1,15 @@
+class CreateEventRecurrences < ActiveRecord::Migration
+  def change
+    create_table :event_recurrences do |t|
+      t.references :event, index: true, foreign_key: true
+      t.bool :even_weeks
+      t.bool :odd_weeks
+      t.bool :yearly
+      t.string :months
+      t.string :days
+      t.bool :auto_dismiss
+
+      t.timestamps null: false
+    end
+  end
+end

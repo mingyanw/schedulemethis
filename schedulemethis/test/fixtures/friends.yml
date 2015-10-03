@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_from: 
+  user_to_id: 
+  pending: 
+
+two:
+  user_from: 
+  user_to_id: 
+  pending: 

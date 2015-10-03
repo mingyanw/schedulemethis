@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @event_recurrence.event %>
+</p>
+
+<p>
+  <strong>Even weeks:</strong>
+  <%= @event_recurrence.even_weeks %>
+</p>
+
+<p>
+  <strong>Odd weeks:</strong>
+  <%= @event_recurrence.odd_weeks %>
+</p>
+
+<p>
+  <strong>Yearly:</strong>
+  <%= @event_recurrence.yearly %>
+</p>
+
+<p>
+  <strong>Months:</strong>
+  <%= @event_recurrence.months %>
+</p>
+
+<p>
+  <strong>Days:</strong>
+  <%= @event_recurrence.days %>
+</p>
+
+<p>
+  <strong>Auto dismiss:</strong>
+  <%= @event_recurrence.auto_dismiss %>
+</p>
+
+<%= link_to 'Edit', edit_event_recurrence_path(@event_recurrence) %> |
+<%= link_to 'Back', event_recurrences_path %>

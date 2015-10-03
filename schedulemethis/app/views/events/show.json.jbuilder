@@ -1,0 +1,1 @@
+json.extract! @event, :id, :short_description, :description, :start_date, :end_date, :start_time, :end_time, :start_time_flex_amount, :end_time_flex_amount, :priority, :may_split, :estimated_time_required, :location, :created_at, :updated_at

@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Short description:</strong>
+  <%= @event.short_description %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @event.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @event.end_date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @event.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @event.end_time %>
+</p>
+
+<p>
+  <strong>Start time flex amount:</strong>
+  <%= @event.start_time_flex_amount %>
+</p>
+
+<p>
+  <strong>End time flex amount:</strong>
+  <%= @event.end_time_flex_amount %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @event.priority %>
+</p>
+
+<p>
+  <strong>May split:</strong>
+  <%= @event.may_split %>
+</p>
+
+<p>
+  <strong>Estimated time required:</strong>
+  <%= @event.estimated_time_required %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

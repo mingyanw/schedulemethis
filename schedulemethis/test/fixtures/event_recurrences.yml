@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 
+  even_weeks: 
+  odd_weeks: 
+  yearly: 
+  months: MyString
+  days: MyString
+  auto_dismiss: 
+
+two:
+  event_id: 
+  even_weeks: 
+  odd_weeks: 
+  yearly: 
+  months: MyString
+  days: MyString
+  auto_dismiss: 

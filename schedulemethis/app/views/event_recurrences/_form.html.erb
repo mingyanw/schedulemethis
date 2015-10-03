@@ -1,0 +1,45 @@
+<%= form_for(@event_recurrence) do |f| %>
+  <% if @event_recurrence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event_recurrence.errors.count, "error") %> prohibited this event_recurrence from being saved:</h2>
+
+      <ul>
+      <% @event_recurrence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :event_id %><br>
+    <%= f.text_field :event_id %>
+  </div>
+  <div class="field">
+    <%= f.label :even_weeks %><br>
+    <%= f.text_field :even_weeks %>
+  </div>
+  <div class="field">
+    <%= f.label :odd_weeks %><br>
+    <%= f.text_field :odd_weeks %>
+  </div>
+  <div class="field">
+    <%= f.label :yearly %><br>
+    <%= f.text_field :yearly %>
+  </div>
+  <div class="field">
+    <%= f.label :months %><br>
+    <%= f.text_field :months %>
+  </div>
+  <div class="field">
+    <%= f.label :days %><br>
+    <%= f.text_field :days %>
+  </div>
+  <div class="field">
+    <%= f.label :auto_dismiss %><br>
+    <%= f.text_field :auto_dismiss %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

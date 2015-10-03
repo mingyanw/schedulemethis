@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  short_description: MyString
+  description: MyString
+  start_date: 2015-10-02
+  end_date: 2015-10-02
+  start_time: 2015-10-02 19:43:21
+  end_time: 2015-10-02 19:43:21
+  start_time_flex_amount: 1
+  end_time_flex_amount: 1
+  priority: 
+  may_split: 
+  estimated_time_required: 1
+  location: MyString
+
+two:
+  short_description: MyString
+  description: MyString
+  start_date: 2015-10-02
+  end_date: 2015-10-02
+  start_time: 2015-10-02 19:43:21
+  end_time: 2015-10-02 19:43:21
+  start_time_flex_amount: 1
+  end_time_flex_amount: 1
+  priority: 
+  may_split: 
+  estimated_time_required: 1
+  location: MyString

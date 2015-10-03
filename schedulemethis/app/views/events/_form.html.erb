@@ -1,0 +1,65 @@
+<%= form_for(@event) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :short_description %><br>
+    <%= f.text_field :short_description %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time %><br>
+    <%= f.time_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.time_select :end_time %>
+  </div>
+  <div class="field">
+    <%= f.label :start_time_flex_amount %><br>
+    <%= f.number_field :start_time_flex_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time_flex_amount %><br>
+    <%= f.number_field :end_time_flex_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br>
+    <%= f.text_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :may_split %><br>
+    <%= f.text_field :may_split %>
+  </div>
+  <div class="field">
+    <%= f.label :estimated_time_required %><br>
+    <%= f.number_field :estimated_time_required %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
