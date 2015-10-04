@@ -1,3 +1,8 @@
 @import "materialize/components/color";
-$primary-color: color("blue", "lighten-2") !default;
+$primary-color: color("blue", "darken-1") !default;
 @import "materialize";
+
+#main_container{
+	/*Set the Main Container (Where All the Elements - Nav, Footer, Body) is housed to full width*/
+	width: 100%;
+}
