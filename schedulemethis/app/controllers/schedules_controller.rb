@@ -7,6 +7,10 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
+  #Dashboard View
+  def dashboard
+  end
+
   #Calendar View
   def calendar
   end

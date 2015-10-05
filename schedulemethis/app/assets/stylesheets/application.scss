@@ -9,3 +9,18 @@ $primary-color: color("blue", "darken-1") !default;
 	/*Set the Main Container (Where All the Elements - Nav, Footer, Body) is housed to full width*/
 	width: 100%;
 }
+
+/*Logo on Nav bar*/
+#logo{
+	padding: 5px;
+}
+
+#main_content{
+	/*Add some space between the main content and the body container (main container)*/
+	margin: 5px;
+}
+
+.agenda_header{
+	color: orange;
+	font-size: 1.5em;
+}

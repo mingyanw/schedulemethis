@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # Replace with DASHBOARD 
-  root 'schedules#index'
+  root 'schedules#dashboard'
 
   # Nav Links
   get '/calendar' => 'schedules#calendar'
