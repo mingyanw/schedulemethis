@@ -1,0 +1,20 @@
+<div class="owl-carousel">
+	<% @events.each do |e| %>
+		<div class="row col s10 z-depth-2 blue lighten-4">
+			<div class="col s12 center">
+				<%= e.short_description %>
+			</div>
+			<div class = "col s2 offset-s3">
+				<i class="material-icons">done</i>
+			</div>
+			<div class = "col s2 offset-s2">
+				<i class="material-icons">replay</i>
+			</div>
+		</div>
+
+    <% end %>
+</div>
+
+<script>
+$(".owl-carousel").owlCarousel();
+</script>

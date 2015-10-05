@@ -2,6 +2,8 @@
 @import "materialize/components/color";
 $primary-color: color("blue", "darken-1") !default;
 @import "materialize";
+@import "owl.carousel";
+@import "owl.theme";
 
 #main_container{
 	/*Set the Main Container (Where All the Elements - Nav, Footer, Body) is housed to full width*/
