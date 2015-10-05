@@ -10,7 +10,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  # Replace with DASHBOARD 
   root 'schedules#index'
+
+  # Nav Links
+  get '/calendar' => 'schedules#calendar'
+  get '/agenda' => 'schedules#agenda'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

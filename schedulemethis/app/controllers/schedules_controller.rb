@@ -7,6 +7,14 @@ class SchedulesController < ApplicationController
     @schedules = Schedule.all
   end
 
+  #Calendar View
+  def calendar
+  end
+
+  #Agenda View 
+  def agenda
+  end
+
   # GET /schedules/1
   # GET /schedules/1.json
   def show
