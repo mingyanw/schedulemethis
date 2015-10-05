@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :all_events, only: [:index, :create, :update]
+  respond_to :html, :js
 
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
   end
 
   # GET /events/1
@@ -25,16 +26,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    @event.save
+    #validation?
   end
 
   # PATCH/PUT /events/1
@@ -62,6 +55,9 @@ class EventsController < ApplicationController
   end
 
   private
+    def all_events
+      @events = Event.all
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])

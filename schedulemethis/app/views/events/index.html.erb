@@ -1,49 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Short description</th>
-      <th>Description</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Start time flex amount</th>
-      <th>End time flex amount</th>
-      <th>Priority</th>
-      <th>May split</th>
-      <th>Estimated time required</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.short_description %></td>
-        <td><%= event.description %></td>
-        <td><%= event.start_date %></td>
-        <td><%= event.end_date %></td>
-        <td><%= event.start_time %></td>
-        <td><%= event.end_time %></td>
-        <td><%= event.start_time_flex_amount %></td>
-        <td><%= event.end_time_flex_amount %></td>
-        <td><%= event.priority %></td>
-        <td><%= event.may_split %></td>
-        <td><%= event.estimated_time_required %></td>
-        <td><%= event.location %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+<div class="container">
+  <div class="row">
+    <div class="card-panel light-blue lighten-5 col s4">
+      <h4>Events</h4>
+      <%= link_to new_event_path, remote: true do %>
+        <button class="btn btn-default">New</button>
+      <% end %></br></br>
+      <div id="event-form" style="display:none;"></div>
+    </div>
+    </br>
+    <div class="col s4 offset-s1" id="events"><%= render @events %></div>
+  </div>
+</div>
