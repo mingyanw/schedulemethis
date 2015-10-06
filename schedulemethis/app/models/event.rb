@@ -7,5 +7,5 @@ class Event < ActiveRecord::Base
   
   scope :closest_end_date, -> { order(end_date: :asc) }
   scope :inactive, -> {where(["scheduled_end < ?", DateTime.now])}
-  scope :pending, 0> {where("not completed and not dismissed")}
+  scope :pending, -> {where("not completed and not dismissed")}
 end
