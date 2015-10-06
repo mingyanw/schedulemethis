@@ -4,6 +4,7 @@ $primary-color: color("blue", "darken-1") !default;
 @import "materialize";
 @import "owl.carousel";
 @import "owl.theme";
+@import "fullcalendar";
 
 #main_container{
 	/*Set the Main Container (Where All the Elements - Nav, Footer, Body) is housed to full width*/
@@ -23,4 +24,11 @@ $primary-color: color("blue", "darken-1") !default;
 .agenda_header{
 	color: orange;
 	font-size: 1.5em;
+}
+
+
+#calendar{
+	/*Constrain the calendar container to 98% of the screen for whitespace*/
+	width: 98%;
+	padding-top: 5px;
 }
