@@ -9,6 +9,15 @@ class SchedulesController < ApplicationController
 
   #Dashboard View
   def dashboard
+    if !user_signed_in?
+      redirect_to new_user_session_url
+    else
+      @schedule = Schedule.all.where(user_id: current_user.id).first
+      @events = nil
+      if !@schedule.nil?
+        @events = Event.all.where(schedule_id: @schedule.id)
+      end
+    end
   end
 
   #Calendar View
