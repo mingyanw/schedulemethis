@@ -8,5 +8,4 @@ $(document).ready(function() {
         alert('Add Task! To be implemented in next sprint');
     	}
     })
-
 });
