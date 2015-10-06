@@ -15,4 +15,6 @@
 //= require materialize-sprockets
 //= require turbolinks
 //= require owl.carousel
+//= require moment
+//= require fullcalendar
 //= require_tree .
