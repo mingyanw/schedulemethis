@@ -40,6 +40,10 @@ gem 'therubyracer'
 #Use Materialize for base styling 
 gem 'materialize-sass'
 
+#Calednar Gem & dependencies 
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
