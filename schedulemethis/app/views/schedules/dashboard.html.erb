@@ -1,1 +1,9 @@
-<h1>Dashboard</h1>
+<% if @events.nil? %>
+  <h1> You have no events yet! <%= link_to "Schedule an event", new_event_path %> </h1>
+<% else %>
+  <% @events.each do |event| %>
+    <% Event_Instance.all.pending.where(event_id: event.id).each do |instance| %>
+      <br><%= event.short_description %>
+    <% end %>
+  <% end %>  
+<% end %>
