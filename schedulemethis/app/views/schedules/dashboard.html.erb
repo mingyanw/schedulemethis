@@ -1,9 +1,12 @@
 <% if @events.nil? %>
-  <h1> You have no events yet! <%= link_to "Schedule an event", new_event_path %> </h1>
+  <h1> You have no events yet! <%= link_to "Schedule an event", events_path %> </h1>
 <% else %>
+  <h2>Events on your schedule:</h2>
+  <ol id="dash-list">
   <% @events.each do |event| %>
-    <% Event_Instance.all.pending.where(event_id: event.id).each do |instance| %>
-      <br><%= event.short_description %>
-    <% end %>
-  <% end %>  
+    <!--# Event_Instance.all.pending.where(event_id: event.id).each do |instance| %-->
+      <li><%= link_to event.short_description, event %> <span><%= link_to "dismiss", event %></span></li>
+    <!--% end %-->
+  <% end %>
+  </ol>
 <% end %>

@@ -25,9 +25,19 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-    @event.save
-    #validation?
+    if !user_signed_in?
+      redirect_to root_url
+    else
+      @mySchedule = Schedule.all.where(user_id: current_user.id).first
+      if @mySchedule.nil?
+        @mySchedule = Schedule.create user_id: current_user.id
+        @mySchedule.save!
+      end
+      @event = Event.new(event_params)
+      @event.schedule = @mySchedule
+      @event.save
+      #validation?
+    end
   end
 
   # PATCH/PUT /events/1

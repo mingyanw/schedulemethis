@@ -1,3 +1,19 @@
 // Place all the styles related to the Schedules controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#dash-list{
+	font-size: 35px;
+	padding-left: 5%;
+	padding-right: 1%;
+	margin-left:3%;
+	margin-right: 25%;
+	span{
+		padding-top: 1%;
+		font-size: 20pt;
+		float:right;
+	}
+}
+#dash-list:hover{
+	background-color: #CCFFFF;
+}
