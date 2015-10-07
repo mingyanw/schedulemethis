@@ -28,6 +28,8 @@ class SchedulesController < ApplicationController
   #Agenda View 
   def agenda
     @events = Event.on_day(Date.today)
+    # Pass in an array of days of the week and the events on those days
+    @this_week_events = Event.eventsThisWeek;
   end
 
   # GET /schedules/1
