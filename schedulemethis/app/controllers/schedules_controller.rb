@@ -22,10 +22,12 @@ class SchedulesController < ApplicationController
 
   #Calendar View
   def calendar
+    @events = Event.all
   end
 
   #Agenda View 
   def agenda
+    @events = Event.on_day(Date.today)
   end
 
   # GET /schedules/1
