@@ -5,6 +5,7 @@ $primary-color: color("blue", "darken-1") !default;
 @import "owl.carousel";
 @import "owl.theme";
 @import "fullcalendar";
+@import "schedules";
 
 #main_container{
 	/*Set the Main Container (Where All the Elements - Nav, Footer, Body) is housed to full width*/
