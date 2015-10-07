@@ -4,5 +4,16 @@
 
 #dash-list{
 	font-size: 35px;
-	margin-left: 5%;
+	padding-left: 5%;
+	padding-right: 1%;
+	margin-left:3%;
+	margin-right: 25%;
+	span{
+		padding-top: 1%;
+		font-size: 20pt;
+		float:right;
+	}
+}
+#dash-list:hover{
+	background-color: #CCFFFF;
 }

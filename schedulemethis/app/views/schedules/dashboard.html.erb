@@ -5,7 +5,7 @@
   <ol id="dash-list">
   <% @events.each do |event| %>
     <!--# Event_Instance.all.pending.where(event_id: event.id).each do |instance| %-->
-      <li><%= event.short_description %></li>
+      <li><%= link_to event.short_description, event %> <span><%= link_to "dismiss", event %></span></li>
     <!--% end %-->
   <% end %>
   </ol>
