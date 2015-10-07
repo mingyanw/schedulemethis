@@ -66,7 +66,7 @@ class EventsController < ApplicationController
 
   private
     def all_events
-      @events = Event.recently_created.limit(5)
+      @events = Event.recently_created.limit(10)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_event
