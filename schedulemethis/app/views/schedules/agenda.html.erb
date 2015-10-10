@@ -9,10 +9,18 @@
 			<%for event in day[1] %>
 				<div class="row" style="margin-bottom: 0px;">
 					<div class="col s3"><%= event.start_time.strftime('%I:%M %p') %></div>
-				    <div class="col s6"><%= event.short_description %></div>
+				    <div class="col s6">
+				    	<%= link_to event_path(event), class: "span" do %>
+						    <%= event.short_description %>
+						<% end %>
+				    </div>
 				   	<div class="col s3">
-				   		<a href="agenda"><i class="material-icons">mode_edit</i></a>
-		    			<a href="agenda"><i class="material-icons">delete</i></a>
+		    			<%= link_to edit_event_path(event), class: "span" do %>
+						    <i class="material-icons btn-icons edit-btn">mode_edit</i>
+						<% end %>
+						<%= link_to event_path(event), method: :delete,  class: "span" do %>
+						    <i class="material-icons btn-icons delete-btn">delete</i>
+						<% end %>
 				   	</div>
 				</div>	
 			<% end %>
