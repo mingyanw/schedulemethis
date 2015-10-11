@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
 
   # Scopes
   scope :closest_end_date, -> { order(end_date: :asc) }
-  scope :recently_created, -> { order(created_at: :desc)}
+  scope :recently_created, -> { order(created_at: :asc)}
   scope :on_day, -> (date) { where('DATE(start_date) = ?', date)}
   scope :inactive, -> {where(["scheduled_end < ?", DateTime.now])}
   scope :pending, -> {where("not completed and not dismissed")}
@@ -40,6 +40,12 @@ class Event < ActiveRecord::Base
     self.start_time = time
   	self.save
   	set_date_str = set_date.to_s + "T" + time
+  end
+
+  def set_end_time
+    self.end_time = self.start_time + (self.estimated_time_required * 60)
+    self.save
+    "#{self.start_date.to_s}T#{self.end_time.hour}:#{self.end_time.min}:00"
   end
   #Methods
 

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require materialize-sprockets
 //= require turbolinks
 //= require owl.carousel
