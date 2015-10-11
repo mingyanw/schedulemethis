@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :all_events, only: [:index, :create, :update]
+  before_action :all_events, only: [:index, :create, :update, :destroy]
   respond_to :html, :js
 
   # GET /events
@@ -33,9 +33,12 @@ class EventsController < ApplicationController
         @mySchedule = Schedule.create user_id: current_user.id
         @mySchedule.save!
       end
-      @event = Event.new(event_params)
-      @event.schedule = @mySchedule
-      @event.save
+        @event = Event.new(event_params)
+        @event.schedule = @mySchedule
+        @event.save
+      respond_to do |format|
+        format.js { flash[:notice] = "Event #{@event.short_description} was created"}
+      end
       #validation?
     end
   end
@@ -61,6 +64,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
       format.json { head :no_content }
+      format.js { flash[:notice] = "Event #{@event.short_description} was removed"}
     end
   end
 

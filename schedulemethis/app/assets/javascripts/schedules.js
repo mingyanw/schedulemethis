@@ -12,8 +12,8 @@ $(document).ready(function() {
         eventClick:  function(event, jsEvent, view) {
         //set the values and open the modal
         $("#eventInfo").html(event.short_description);
-        $("#startTime").html(moment(event.start).format('MMM Do h:mm A'));
-        //$("#endTime").html(event.end);
+        $("#startTime").html("Start: " + moment(event.start).format('MMM Do h:mm A'));
+        //$("#endTime").html("End: " + moment(event.end).format('MMM Do h:mm A'));
         $("#eventLink").attr('href', event.url);
         $("#eventContent").dialog({ modal: true, title: event.title });
         return false;

@@ -1,4 +1,7 @@
 <div class="chip">
     <%= event.short_description %>&nbsp;|&nbsp;<%= event.estimated_time_required %>
-    <i class="material-icons">close</i>
+    <%= link_to event, method: :delete, confirm: 'Delete?', class: 'link-delete', 'data-message' => 'Are you sure?', 'data-severity' => 'danger', :remote => true do %>
+    	<i class="material-icons">close</i>
+	<% end %>
+    
 </div>

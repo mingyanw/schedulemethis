@@ -18,6 +18,15 @@ $primary-color: color("blue", "darken-1") !default;
 	padding: 5px;
 }
 
+#chip-notice{
+	display: none;
+	background-color: #4db6ac;
+}
+
+.brand-logo.center{
+	padding-top: 2%;
+}
+
 #main_content{
 	/*Add some space between the main content and the body container (main container)*/
 	margin: 5px;
