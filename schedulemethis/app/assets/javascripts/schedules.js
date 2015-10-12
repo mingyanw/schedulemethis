@@ -8,7 +8,7 @@ var ready;
 // Suggested by Stackoverflow post: 
 // http://stackoverflow.com/questions/18770517/rails-4-how-to-use-document-ready-with-turbo-links
 ready = function() {
-    // Load & display calendar 
+    // Load & display calendar on the Calendar page
     $('#calendar').fullCalendar({
         header: { center: 'month,agendaWeek' },
         events: '/events.json',
@@ -21,7 +21,15 @@ ready = function() {
         $("#eventContent").dialog({ modal: true, title: event.title });
         return false;
         }
-    }) 
+    })
+
+    // Load & display mini calendar on the Dashboard
+    $('#mini_calendar').fullCalendar({
+        defaultView: 'agendaDay',
+        events: '/events.json'
+    })
+
+
 };
 
 

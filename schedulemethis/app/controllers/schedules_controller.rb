@@ -15,7 +15,10 @@ class SchedulesController < ApplicationController
       @schedule = Schedule.all.where(user_id: current_user.id).first
       @events = nil
       if !@schedule.nil?
+        # All Events in the User's Schedule 
         @events = Event.all.where(schedule_id: @schedule.id)
+        # Today's Event 
+        @todays_events = @events.eventsThisWeek.first;
       end
     end
   end

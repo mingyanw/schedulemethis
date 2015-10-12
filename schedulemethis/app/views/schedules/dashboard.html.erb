@@ -1,12 +1,31 @@
-<% if @events.nil? %>
-  <h1> You have no events yet! <%= link_to "Schedule an event", events_path %> </h1>
-<% else %>
-  <h2>Events on your schedule:</h2>
-  <ol id="dash-list">
-  <% @events.each do |event| %>
-    <!--# Event_Instance.all.pending.where(event_id: event.id).each do |instance| %-->
-      <li><%= link_to event.short_description, event %> <span><%= link_to "dismiss", event %></span></li>
-    <!--% end %-->
-  <% end %>
-  </ol>
-<% end %>
+<!-- Page Layout here -->
+<div class="row">
+	<div class="col s7">
+	    <!-- Main Panel -->
+	    <div class="container">
+			<div id='mini_calendar'></div>
+		</div>
+	</div> <!--Closes Main Panel -->
+
+  <div class="col s5">
+    <!-- Side Panel  -->
+    	<% if @events.nil? %>
+		  <h4> You have no events yet! <%= link_to "Schedule an event", events_path %> </h4>
+		<% else %>
+			<h4>Today's Tasks</h4>
+			<ol id="dash-list">
+			<% @todays_events[1].each do |event| %>
+				<div class="row" style="margin-bottom: 0px;">
+					<div class="col s8">
+		    			<li><%= link_to event.short_description, event %></li>
+		    		</div>
+		    		<div class="col s4">
+		    			<span class="dismiss_links"><%= link_to "Dismiss", event %></span>
+		    		</div>
+		    	</div>
+			<% end %>
+			</ol>
+		<% end %>
+  </div> <!--Closes Side Panel -->
+
+</div>
