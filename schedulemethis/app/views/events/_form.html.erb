@@ -18,24 +18,20 @@
 <!--   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
-  </div>
+  </div -->
   <div class="field">
     <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
+    <input type="date" class="datepicker" name="start_date">
   </div>
-  <div class="field">
+  <!--div class="field">
     <%= f.label :end_date %><br>
     <%= f.date_select :end_date %>
-  </div>
+  </div-->
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.time_select :start_time %>
+    <%= f.time_field :start_time %>
   </div>
-  <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.time_select :end_time %>
-  </div>
-  <div class="field">
+  <!--div class="field">
     <%= f.label :start_time_flex_amount %><br>
     <%= f.number_field :start_time_flex_amount %>
   </div>
@@ -44,8 +40,19 @@
     <%= f.number_field :end_time_flex_amount %>
   </div> -->
   <div class="field">
-    <%= f.label :priority %><br>
-    <%= f.text_field :priority %>
+    <%= f.label :priority %>
+    <p>
+      <input id="p_high" name="priority" type="radio" value="1" />
+      <label for="p_high">High</label>
+    </p>
+    <p>
+      <input id="p_med" name="priority" type="radio" value="2" />
+      <label for="p_med">Medium</label>
+    </p>
+    <p>
+      <input id="p_low" name="priority" type="radio" value="3" />
+      <label for="p_low">Low</label>
+    </p>
   </div>
 <!--   <div class="field">
     <%= f.label :may_split %><br>

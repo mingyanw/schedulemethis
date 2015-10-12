@@ -34,6 +34,7 @@ class EventsController < ApplicationController
         @mySchedule.save!
       end
         @event = Event.new(event_params)
+        @event.priority = @event.priority.to_i
         @event.schedule = @mySchedule
         @event.save
       respond_to do |format|
