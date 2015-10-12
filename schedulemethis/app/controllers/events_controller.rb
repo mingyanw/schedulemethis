@@ -40,6 +40,7 @@ class EventsController < ApplicationController
         @event.save
       respond_to do |format|
         format.js { flash[:notice] = "Event #{@event.short_description} was created"}
+        format.html { redirect_to :back }
       end
       #validation?
     end

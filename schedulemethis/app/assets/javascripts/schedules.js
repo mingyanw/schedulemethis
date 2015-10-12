@@ -5,6 +5,7 @@ $(document).ready(function() {
     $('#calendar').fullCalendar({
     	header: { center: 'month,agendaWeek' },
     	events: '/events.json',
+        
         // weekends: false // will hide Saturdays and Sundays
         //dayClick: function() {
         //alert('Add Task! To be implemented in next sprint');
@@ -13,10 +14,15 @@ $(document).ready(function() {
         //set the values and open the modal
         $("#eventInfo").html(event.short_description);
         $("#startTime").html("Start: " + moment(event.start).format('MMM Do h:mm A'));
-        //$("#endTime").html("End: " + moment(event.end).format('MMM Do h:mm A'));
+        $("#endTime").html("End: " + moment(event.end).format('MMM Do h:mm A'));
         $("#eventLink").attr('href', event.url);
         $("#eventContent").dialog({ modal: true, title: event.title });
         return false;
     }
-    })
+    });
+    $('.modal-trigger').leanModal();
+    $('.actions2').click(function() {
+        $("#modal1").closeModal();
+    });
+
 });

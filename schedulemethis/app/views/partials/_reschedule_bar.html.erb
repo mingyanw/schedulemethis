@@ -1,15 +1,15 @@
 <hr>
 <div class="owl-carousel">
 	<% @events.each do |e| %>
-		<div class="row col s10 z-depth-2 blue lighten-4">
-			<div class="col s12 center">
+		<div class="row col s10 z-depth-2" id="event_boxes">
+			<div class="col s12 center white-text">
 				<%= e.short_description %>
 			</div>
-			<div class = "col s2 offset-s3">
-				<i class="material-icons">done</i>
+			<div class = "col s2 offset-s3 white-text">
+				<i class="material-icons" id="finished">done</i>
 			</div>
-			<div class = "col s2 offset-s2">
-				<i class="material-icons">replay</i>
+			<div class = "col s2 offset-s2 white-text">
+				<i class="material-icons" id="reschedule">replay</i>
 			</div>
 		</div>
 

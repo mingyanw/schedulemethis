@@ -1,8 +1,11 @@
 <!-- <h4>Calendar View</h4> -->
 <!-- <img class="responsive-img" src="https://photos-4.dropbox.com/t/2/AAA041OvvWEaW0L-9jTXbmuH0-JgXu1jyiB__Tpa8ymN9A/12/41167039/png/32x32/1/_/1/2/Sample%20Full%20UI%20Calendar.png/ENPGtx8YxOEIIAIoAg/nw5NzRswp8AQ7qs7xEK8gmS1lpN7TnYRXvfSCL6wGho?size=1024x768&size_mode=2"> -->
 <div class="container">
+	<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add Event</a>
 	<div id='calendar'></div>
 </div>
+
+ 
 
 <div id="eventContent" title="Event Details">
     <div id="eventInfo"></div>
@@ -11,4 +14,18 @@
     <p><strong><a id="eventLink" target="_blank">Read More</a></strong></p>
 </div>
 
-<%= render 'partials/reschedule_bar' %>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+  	<div class="container">
+  		<div class="col s4">
+  		<div class="card grey lighten-3">
+            <div class="card-content white-text">
+              <span class="card-title grey-text">Add Event</span>
+            </div>
+            <div class="card-action">
+              <%= render "events/form2" %>
+            </div>
+          </div>
+	</div>
+  </div>
