@@ -42,7 +42,7 @@ class Event < ActiveRecord::Base
   	set_date_str = set_date.to_s + "T" + time
   end
 
-  def set_end_time
+  def get_end_time
     self.end_time = self.start_time + (self.estimated_time_required * 60)
     self.save
     "#{self.start_date.to_s}T#{self.end_time.hour}:#{self.end_time.min}:00"
