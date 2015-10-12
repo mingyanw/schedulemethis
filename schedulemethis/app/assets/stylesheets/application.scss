@@ -1,6 +1,6 @@
 /*Set Color Scheme for Application*/
 @import "materialize/components/color";
-$primary-color: color("blue", "darken-1") !default;
+$primary-color: #3a87ad !default;
 @import "materialize";
 @import "owl.carousel";
 @import "owl.theme";
@@ -16,6 +16,10 @@ $primary-color: color("blue", "darken-1") !default;
 /*Logo on Nav bar*/
 #logo{
 	padding: 5px;
+}
+
+#event_boxes{
+	background-color: #3a87ad;
 }
 
 #chip-notice{

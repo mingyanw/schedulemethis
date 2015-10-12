@@ -34,10 +34,13 @@ class EventsController < ApplicationController
         @mySchedule.save!
       end
         @event = Event.new(event_params)
+        @event.priority = @event.priority.to_i
+        @event.end_time = @event.start_time + (60 * @event.estimated_time_required)
         @event.schedule = @mySchedule
         @event.save
       respond_to do |format|
         format.js { flash[:notice] = "Event #{@event.short_description} was created"}
+        format.html { redirect_to :back }
       end
       #validation?
     end

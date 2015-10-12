@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
 
   def get_start_datetime
   	if !self.start_date.nil?
-  		return "#{self.start_date.to_s}T#{self.start_time.hour}:#{self.start_time.min}:00"
+  		return "#{self.start_date.to_s}T#{self.start_time.hour}:#{self.time_minutes(self.start_time.min)}:00"
   	end
     start_times = Event.all.map{|e| e.start_date}
   	set_date = Date.today.beginning_of_week
@@ -35,6 +35,11 @@ class Event < ActiveRecord::Base
   	set_date_str
   end
 
+  def time_minutes(mins)
+    return "00" if mins == 0
+    mins
+  end
+
   def set_start_time(set_date, time)
     self.start_date = set_date
     self.start_time = time
@@ -42,10 +47,10 @@ class Event < ActiveRecord::Base
   	set_date_str = set_date.to_s + "T" + time
   end
 
-  def set_end_time
+  def get_end_time
     self.end_time = self.start_time + (self.estimated_time_required * 60)
     self.save
-    "#{self.start_date.to_s}T#{self.end_time.hour}:#{self.end_time.min}:00"
+    "#{self.start_date.to_s}T#{self.end_time.hour}:#{self.time_minutes(self.end_time.min)}:00"
   end
   #Methods
 

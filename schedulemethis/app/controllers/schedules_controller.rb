@@ -23,6 +23,7 @@ class SchedulesController < ApplicationController
   #Calendar View
   def calendar
     @events = Event.all
+    @event = Event.new
   end
 
   #Agenda View 
