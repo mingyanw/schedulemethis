@@ -4,7 +4,11 @@
 		<h4>Weekly Agenda</h4>
 		<%for day in @this_week_events %>
 			<!-- Display the Day of the Week as the Header -->
-			<h6 class="agenda_header"><%= day[0].strftime('%A %b %e') %></h6>
+			<%if day.equal?(@this_week_events.first) %>
+				<h6 class="agenda_header">Today</h6>
+			<% else %>
+				<h6 class="agenda_header"><%= day[0].strftime('%A, %b %e') %></h6>
+			<% end %>
 			<!--Display the events during the day -->
 			<%for event in day[1] %>
 				<div class="row" style="margin-bottom: 0px;">
