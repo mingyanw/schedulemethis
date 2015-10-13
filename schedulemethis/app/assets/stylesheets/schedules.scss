@@ -3,17 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #dash-list{
-	font-size: 35px;
+	font-size: 1.5em;
 	padding-left: 5%;
 	padding-right: 1%;
 	margin-left:3%;
 	margin-right: 25%;
-	span{
-		padding-top: 1%;
-		font-size: 20pt;
-		float:right;
-	}
 }
-#dash-list:hover{
-	background-color: #CCFFFF;
+
+.dismiss_links{
+	/*Customize style for Dismiss links*/
 }
+
