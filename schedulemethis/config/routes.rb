@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get '/calendar' => 'schedules#calendar'
   get '/agenda' => 'schedules#agenda'
 
+  get '/reset_times_event/:id' => 'events#reset_times'
+  get '/finished_event/:id' =>'events#finished'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

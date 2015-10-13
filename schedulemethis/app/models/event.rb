@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
   scope :on_day, -> (date) { where('DATE(start_date) = ?', date)}
   scope :inactive, -> {where(["scheduled_end < ?", DateTime.now])}
   scope :pending, -> {where("not completed and not dismissed")}
+  scope :notcompleted, -> {where("completed IS NOT ?", true)}
 
   def get_start_datetime
   	if !self.start_date.nil?

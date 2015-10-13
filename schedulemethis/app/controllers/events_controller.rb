@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :finished, :reschedule]
   before_action :all_events, only: [:index, :create, :update, :destroy]
   respond_to :html, :js
 
@@ -20,6 +20,15 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+  end
+
+  def finished
+    @event.completed = true
+    @event.save
+    redirect_to :back #replace with respond to format.js
+  end
+
+  def reschedule
   end
 
   # POST /events
@@ -73,6 +82,7 @@ class EventsController < ApplicationController
 
   private
     def all_events
+      @nc_events = Event.all.notcompleted
       @events = Event.recently_created
     end
     # Use callbacks to share common setup or constraints between actions.
