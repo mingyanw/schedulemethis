@@ -14,6 +14,9 @@ ready = function() {
         height: 600,
         header: { center: 'month,agendaWeek' },
         events: '/events.json',
+        dayClick: function(date, jsEvent, view) {
+            $('#modal1').openModal();
+        },
         eventClick:  function(event, jsEvent, view) {
         //set the values and open the modal
             $("#eventInfo").html(event.short_description);
