@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :event_recurrences
   resources :event_instances
   resources :events
+  get '/reschedule/:id' => 'events#reschedule', as: 'reschedule'
+  get '/finished/:id' =>'events#finished', as: 'finished'
   resources :schedules
 
   devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout'}, controllers: { registrations: "users/registrations"}
@@ -18,8 +20,7 @@ Rails.application.routes.draw do
   get '/calendar' => 'schedules#calendar'
   get '/agenda' => 'schedules#agenda'
 
-  get '/reset_times_event/:id' => 'events#reset_times'
-  get '/finished_event/:id' =>'events#finished'
+  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

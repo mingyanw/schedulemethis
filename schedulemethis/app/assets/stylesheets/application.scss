@@ -13,6 +13,25 @@ $primary-color: #3a87ad !default;
 	width: 100%;
 }
 
+h2 {
+	font-size: 250%;
+}
+
+#event-form {
+	background-color: #eeeeee;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+label {
+	color: black;
+}
+
+.card-panel {
+	background-color: #3a87ad;
+}
+
+
 /*Logo on Nav bar*/
 #logo{
 	padding: 5px;

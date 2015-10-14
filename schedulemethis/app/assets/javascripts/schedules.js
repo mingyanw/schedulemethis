@@ -10,16 +10,18 @@ var ready;
 ready = function() {
     // Load & display calendar on the Calendar page
     $('#calendar').fullCalendar({
+        allDaySlot: false,
+        height: 600,
         header: { center: 'month,agendaWeek' },
         events: '/events.json',
         eventClick:  function(event, jsEvent, view) {
         //set the values and open the modal
-        $("#eventInfo").html(event.short_description);
-        $("#startTime").html("Start: " + moment(event.start).format('MMM Do h:mm A'));
-        $("#endTime").html("End: " + moment(event.end).format('MMM Do h:mm A'));
-        $("#eventLink").attr('href', event.url);
-        $("#eventContent").dialog({ modal: true, title: event.title });
-        return false;
+            $("#eventInfo").html(event.short_description);
+            $("#startTime").html("Start: " + moment(event.start).format('MMM Do h:mm A'));
+            $("#endTime").html("End: " + moment(event.end).format('MMM Do h:mm A'));
+            $("#eventLink").attr('href', event.url);
+            $("#eventContent").dialog({ modal: true, title: event.title });
+            return false;
         }
     }); //closes full Calendar
 
@@ -33,8 +35,11 @@ ready = function() {
     $('#mini_calendar').fullCalendar({
         defaultView: 'agendaDay',
         events: '/events.json'
-    })
+    });
 
+    $(document).delegate("#finished", "click", function(){
+        $(this).closest('div#event_boxes').hide();
+    });
 
 };
 

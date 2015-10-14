@@ -25,10 +25,20 @@ class EventsController < ApplicationController
   def finished
     @event.completed = true
     @event.save
-    redirect_to :back #replace with respond to format.js
+    respond_to do |format|
+        format.js { flash[:notice] = "Event #{@event.short_description} was completed"} 
+    end
   end
 
   def reschedule
+    @event.start_time = nil
+    @event.start_date = nil
+    @event.end_time = nil
+    @event.save
+    respond_to do |format|
+      format.js { redirect_to calendar_path, notice: "Event #{@event.short_description} was rescheduled"} 
+      #format.html { redirect_to calendar_path, notice: "Event #{@event.short_description} was rescheduled" }
+    end
   end
 
   # POST /events
@@ -44,7 +54,8 @@ class EventsController < ApplicationController
       end
         @event = Event.new(event_params)
         @event.priority = @event.priority.to_i
-        @event.end_time = @event.start_time + (60 * @event.estimated_time_required)
+
+        @event.end_time = @event.start_time + (60 * @event.estimated_time_required) if @event.start_time
         @event.schedule = @mySchedule
         @event.save
       respond_to do |format|
