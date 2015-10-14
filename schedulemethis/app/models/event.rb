@@ -13,6 +13,8 @@ class Event < ActiveRecord::Base
   scope :on_day, -> (date) { where('DATE(start_date) = ?', date)}
   scope :inactive, -> {where(["scheduled_end < ?", DateTime.now])}
   scope :pending, -> {where("not completed and not dismissed")}
+  # Sort events by start time
+  scope :chronological, -> { order(start_time: :asc) }
 
   def get_start_datetime
   	if !self.start_date.nil?
@@ -66,7 +68,8 @@ class Event < ActiveRecord::Base
   	# Populate each day array within thisWeek with events from that day
   	for dayArray in thisWeek do
   		day = dayArray[0]
-  		dayArray.push(Event.on_day(day))
+      # Put events from that day in chronological order and then push to array
+  		dayArray.push(Event.on_day(day).chronological)
   	end
   	return thisWeek
   end
