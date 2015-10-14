@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007165655) do
+ActiveRecord::Schema.define(version: 20151012200559) do
 
   create_table "event_instances", force: :cascade do |t|
     t.integer  "event_id"
@@ -53,9 +53,10 @@ ActiveRecord::Schema.define(version: 20151007165655) do
     t.boolean  "may_split"
     t.integer  "estimated_time_required"
     t.string   "location"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "schedule_id"
+    t.boolean  "completed",               default: false
   end
 
   create_table "friends", force: :cascade do |t|

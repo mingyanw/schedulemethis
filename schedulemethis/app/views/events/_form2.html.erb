@@ -12,25 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :short_description %><br>
+    <%= f.label :title %><br>
     <%= f.text_field :short_description %>
   </div>
 <!--   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div -->
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_field :start_date %>
-  </div>
-  <!--div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div-->
-  <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.time_field :start_time %>
-  </div>
+
   <!--div class="field">
     <%= f.label :start_time_flex_amount %><br>
     <%= f.number_field :start_time_flex_amount %>
@@ -66,6 +55,18 @@
     <%= f.label :location %><br>
     <%= f.text_field :location %>
   </div> -->
+    <div class="field">
+    <%= f.label :start_date %>&nbsp;(optional)<br>
+    <%= f.date_field :start_date %>
+  </div>
+  <!--div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div-->
+  <div class="field">
+    <%= f.label :start_time %>&nbsp;(optional)<br>
+    <%= f.time_field :start_time %>
+  </div>
   <div class="actions2">
     <%= f.submit %>
   </div>

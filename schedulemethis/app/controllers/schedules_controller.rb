@@ -25,6 +25,7 @@ class SchedulesController < ApplicationController
 
   #Calendar View
   def calendar
+    @nc_events = Event.all.notcompleted
     @events = Event.all
     @event = Event.new
   end
