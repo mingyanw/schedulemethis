@@ -14,6 +14,7 @@ ready = function() {
         height: 600,
         header: { center: 'month,agendaWeek' },
         events: '/events.json',
+        eventColor: '#26a69a',
         dayClick: function(date, jsEvent, view) {
             $('#modal1').openModal();
         },
@@ -43,7 +44,9 @@ ready = function() {
 
     // Load & display mini calendar on the Dashboard
     $('#mini_calendar').fullCalendar({
+        allDaySlot: false,
         defaultView: 'agendaDay',
+        eventColor: '#26a69a',
         events: '/events.json'
     });
 
