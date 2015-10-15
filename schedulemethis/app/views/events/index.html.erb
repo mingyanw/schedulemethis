@@ -1,6 +1,6 @@
   <div class="row">
     <div class="card-panel col s8 offset-s2">
-      <div class="col s8">
+      <div class="col s7">
         <h4 id="event_title">Events</h4>
         </br>
         <%= link_to new_event_path, remote: true do %>
@@ -9,7 +9,7 @@
         <div id="event-form" style="display:none;"></div>
       </div>
       </br>
-      <div class="col s4" id="events"><%= render @events %></div></br>
+      <div class="col s5" id="events"><%= render @events %></div></br>
     </div>
   </div>
 </br></br>
