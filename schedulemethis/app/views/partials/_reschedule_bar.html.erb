@@ -1,25 +1,18 @@
-<hr>
-<div class="owl-carousel">
+<ul class="collection with-header">
+	<li class="collection-header"><h5>Past Tasks</h5></li>
 	<% @nc_events.each do |e| %>
-		<div class="row col s10 z-depth-2" id="event_boxes">
-			<div class="col s12 center white-text">
-				<%= e.short_description %>
-			</div>
-			<div class = "col s2 offset-s3 white-text">
+		<!-- div class="row col s10" id="event_boxes"-->
+			<li class="collection-item black-text">
+				
 				<%= link_to finished_path(e.id), :remote => true do %>
 					<i class="material-icons" id="finished">done</i>
 				<% end %>
-			</div>
-			<div class = "col s2 offset-s2 white-text">
+				<%= e.short_description %>
 				<%= link_to reschedule_path(e.id), :remote => true do %>
 					<i class="material-icons" id="reschedule">replay</i>
 				<% end %>
-			</div>
-		</div>
+			</li>
+		<!-- /div-->
 
     <% end %>
-</div>
-
-<script>
-$(".owl-carousel").owlCarousel();
-</script>
+</ul>

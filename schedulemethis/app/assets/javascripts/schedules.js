@@ -48,7 +48,7 @@ ready = function() {
     });
 
     $(document).delegate("#finished", "click", function(){
-        $(this).closest('div#event_boxes').hide();
+        $(this).closest('li').hide();
     });
 
 };
