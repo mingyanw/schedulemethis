@@ -13,12 +13,22 @@ $primary-color: #3a87ad !default;
 	width: 100%;
 }
 
+#event_title {
+	float: left;
+	padding-right: 30px;
+}
+
 h2 {
 	font-size: 250%;
 }
 
 #event-form {
 	background-color: #eeeeee;
+	padding: 20px;
+	border-radius: 20px;
+}
+
+#modal1 {
 	padding: 20px;
 	border-radius: 20px;
 }
