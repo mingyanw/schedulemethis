@@ -1,34 +1,22 @@
 <!-- Page Layout here -->
+
+<!-- Main Dashboard Content -->
 <div class="row">
-	<div class="col s7">
+	<div class="col s6">
 	    <!-- Main Panel -->
 	    <div class="container">
 			<div id='mini_calendar'></div>
 		</div>
 	</div> <!--Closes Main Panel -->
 
-  <div class="col s5">
+  <div class="col s6">
     <!-- Side Panel  -->
-    	<!-- User Notification -->
-    	<div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Hello!</span>
-              <p>Welcome back to Schedule Me This, your personal task scheduler!</p>
-            </div>
-            <div class="card-action">
-              <a href="/events">Add Task</a>
-              <!-- Link to Export/Import function for Google Calendar -->
-              <a href="#">Export/Import</a>
-              <!-- Link to User Preferences page -->
-              <a href="#">Preferences</a>
-            </div>
-        </div>
         <!-- Display Today's Tasks -->
     	<% if @events.nil? %>
 		  <h4> You have no events yet! <%= link_to "Schedule an event", events_path %> </h4>
 		<% else %>
-			<h4>Today's Tasks</h4>
-			<ol id="dash-list">
+			<h4 class="dashboard_header">Today's Tasks</h4>
+			<ol id="dash_list">
 			<% @todays_events[1].each do |event| %>
 				<div class="row" style="margin-bottom: 0px;">
 					<div class="col s8">
@@ -41,6 +29,11 @@
 			<% end %>
 			</ol>
 		<% end %>
+
+		<!-- Advanced functionality -->
+		<h4>Preferences</h4>
+		<a class="waves-effect waves-light btn pref-btn" href="/preferences"><i class="material-icons left">mood</i>Update Scheduler Preferences</a>
+
   </div> <!--Closes Side Panel -->
 
 </div>
