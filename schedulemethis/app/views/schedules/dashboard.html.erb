@@ -12,18 +12,20 @@
   <div class="col s6">
     <!-- Side Panel  -->
         <!-- Display Today's Tasks -->
-    	<% if @events.nil? %>
-		  <h4> You have no events yet! <%= link_to "Schedule an event", events_path %> </h4>
+    	<% if @remaining_events.nil? %>
+		  <h4> You finished all your tasks for today! To schedule a new task, click here <%= link_to "Schedule an event", events_path %> </h4>
 		<% else %>
 			<h4 class="dashboard_header">Today's Tasks</h4>
 			<ol id="dash_list">
-			<% @todays_events[1].each do |event| %>
+			<% @remaining_events.each do |event| %>
 				<div class="row" style="margin-bottom: 0px;">
 					<div class="col s8">
 		    			<li><%= link_to event.short_description, event %></li>
 		    		</div>
 		    		<div class="col s4">
-		    			<span class="dismiss_links"><%= link_to "Dismiss", event %></span>
+		    			<%= link_to finished_path(event.id), :remote => true do %>
+							<span class="dismiss_links">Dismiss</span>
+						<% end %>
 		    		</div>
 		    	</div>
 			<% end %>

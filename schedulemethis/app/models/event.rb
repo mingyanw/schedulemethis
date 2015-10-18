@@ -80,4 +80,8 @@ class Event < ActiveRecord::Base
   	return thisWeek
   end
 
+  def self.remainingEventsToday
+    return Event.on_day(Date.today).notcompleted.chronological
+  end
+
 end

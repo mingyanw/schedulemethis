@@ -19,6 +19,7 @@ class SchedulesController < ApplicationController
         @events = Event.all.where(schedule_id: @schedule.id)
         # Today's Event 
         @todays_events = @events.eventsThisWeek.first;
+        @remaining_events = @events.remainingEventsToday;
       end
     end
   end
