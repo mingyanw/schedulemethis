@@ -82,10 +82,19 @@ label {
 	margin-right: 2px;
 }
 
-.edit-btn{
-	/*color: orange;*/
-}
 
 .delete-btn{
 	color: red;
+}
+
+/*.edit-btn{
+	color: blue;
+}*/
+
+.back-btn{
+	background-color: gray;
+}
+
+.back-btn:hover{
+	background-color: orange;
 }

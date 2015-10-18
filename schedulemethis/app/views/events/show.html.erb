@@ -17,7 +17,7 @@
 
 <p>
   <strong>Estimated time required:</strong>
-  <%= @event.estimated_time_required %>
+  <%= @event.estimated_time_required %> minutes
 </p>
 
 <p>
@@ -63,5 +63,11 @@
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<!-- Link to Edit and Back Buttons -->
+<%= link_to edit_event_path(@event) do%>
+  <button class="btn btn-default edit-btn">Edit</button>
+<% end %>
+
+<%= link_to events_path do %>
+  <button class="btn btn-default back-btn">Back</button>
+<% end %>
