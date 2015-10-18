@@ -60,7 +60,18 @@ class Event < ActiveRecord::Base
     self.save
     "#{self.start_date.to_s}T#{self.time_hours(self.end_time.hour)}:#{self.time_minutes(self.end_time.min)}:00"
   end
+  
   #Methods
+  def priority_rating
+    # Return whether the priority for the event is low, medium, or high
+    if(self.priority == 2)
+      return "High"
+    elsif(self.priority == 1)
+      return "Medium"   
+    else
+      return "Low"
+    end
+  end
 
   # Class Method: return all events this week 
   def self.eventsThisWeek
@@ -78,6 +89,10 @@ class Event < ActiveRecord::Base
   		dayArray.push(Event.on_day(day).chronological)
   	end
   	return thisWeek
+  end
+
+  def self.remainingEventsToday
+    return Event.on_day(Date.today).notcompleted.chronological
   end
 
 end

@@ -54,6 +54,11 @@ ready = function() {
         $(this).closest('li').hide();
     });
 
+    // When the user clicks on the dismiss link, hide the completed event/task
+    $(document).delegate(".dismiss_links", "click", function(){
+        $(this).closest('div.remaining-event').hide();
+    });
+
 };
 
 
