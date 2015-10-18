@@ -62,7 +62,7 @@ label {
 
 #main_content{
 	/*Add some space between the main content and the body container (main container)*/
-	margin: 5px;
+	margin-top: 5px;
 }
 
 .agenda_header{
@@ -82,10 +82,19 @@ label {
 	margin-right: 2px;
 }
 
-.edit-btn{
-	/*color: orange;*/
-}
 
 .delete-btn{
 	color: red;
+}
+
+/*.edit-btn{
+	color: blue;
+}*/
+
+.back-btn{
+	background-color: gray;
+}
+
+.back-btn:hover{
+	background-color: orange;
 }

@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#dash-list{
+#dash_list{
 	font-size: 1.5em;
 	padding-left: 5%;
 	padding-right: 1%;
@@ -20,4 +20,14 @@
 
 #reschedule {
 	float: right;
+}
+
+.dashboard_header{
+	/*Important to keep this in there so that it aligns with the other elements top*/
+	margin-top: 0px;
+}
+
+.pref-btn{
+	/*Preferences Button on Dashboard*/
+	background-color: #039be5;
 }
