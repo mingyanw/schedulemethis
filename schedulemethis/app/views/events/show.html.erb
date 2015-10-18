@@ -1,53 +1,18 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
-  <strong>Short description:</strong>
-  <%= @event.short_description %>
-</p>
+<h4>Task: <%= @event.short_description %></h4>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @event.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @event.end_date %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @event.start_time %>
-</p>
-
-<p>
-  <strong>End time:</strong>
-  <%= @event.end_time %>
-</p>
-
-<p>
-  <strong>Start time flex amount:</strong>
-  <%= @event.start_time_flex_amount %>
-</p>
-
-<p>
-  <strong>End time flex amount:</strong>
-  <%= @event.end_time_flex_amount %>
-</p>
+<!-- Only display if applicable/attribute is defined -->
+<% if @event.description.present? %>
+  <p>
+    <strong>About Task:</strong>
+    <%= @event.description %>
+  </p>
+<% end %>
 
 <p>
   <strong>Priority:</strong>
-  <%= @event.priority %>
-</p>
-
-<p>
-  <strong>May split:</strong>
-  <%= @event.may_split %>
+  <%= @event.priority_rating %>
 </p>
 
 <p>
@@ -56,9 +21,47 @@
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @event.location %>
+  <strong>Scheduled for: </strong><br/>
+  <%= @event.start_date.strftime('%A, %B %d, %Y') %> <br/>
+  <%= @event.start_time.strftime('%I:%M %p') %> - <%= @event.end_time.strftime('%I:%M %p') %>
 </p>
+
+
+<% if @event.end_date.present? %>
+  <p>
+    <strong>End date:</strong>
+    <%= @event.end_date %>
+  </p>
+<% end %>
+
+<% if @event.start_time_flex_amount.present? %>
+  <p>
+    <strong>Start time flex amount:</strong>
+    <%= @event.start_time_flex_amount %>
+  </p>
+<% end %>
+
+<% if @event.end_time_flex_amount.present? %>
+  <p>
+    <strong>End time flex amount:</strong>
+    <%= @event.end_time_flex_amount %>
+  </p>
+<% end %>
+
+<% if @event.may_split.present? %>
+  <p>
+    <strong>May split:</strong>
+    <%= @event.may_split %>
+  </p>
+<% end %>
+
+
+<% if @event.location.present? %>
+  <p>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
