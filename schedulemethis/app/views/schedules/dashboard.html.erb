@@ -15,10 +15,10 @@
     	<% if @remaining_events.nil? %>
 		  <h4> You finished all your tasks for today! To schedule a new task, click here <%= link_to "Schedule an event", events_path %> </h4>
 		<% else %>
-			<h4 class="dashboard_header">Today's Tasks</h4>
+			<h4 class="dashboard_header">Today's Remaining Tasks</h4>
 			<ol id="dash_list">
 			<% @remaining_events.each do |event| %>
-				<div class="row" style="margin-bottom: 0px;">
+				<div class="row remaining-event" style="margin-bottom: 0px;">
 					<div class="col s8">
 		    			<li><%= link_to event.short_description, event %></li>
 		    		</div>
