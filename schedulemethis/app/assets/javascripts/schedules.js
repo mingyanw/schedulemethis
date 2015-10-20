@@ -12,6 +12,8 @@ ready = function() {
     $('#calendar').fullCalendar({
         allDaySlot: false,
         height: 600,
+        minTime: "05:00:00",
+        slotDuration: '00:30:00',
         header: { center: 'month,agendaWeek' },
         eventSources: [
         {
