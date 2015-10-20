@@ -19,17 +19,9 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div -->
-
+  
   <!--div class="field">
-    <%= f.label :start_time_flex_amount %><br>
-    <%= f.number_field :start_time_flex_amount %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time_flex_amount %><br>
-    <%= f.number_field :end_time_flex_amount %>
-  </div> -->
-  <div class="field">
-    <%= f.label :priority %>
+    <%#= f.label :priority %>
     <p>
       <input id="p_high" name="priority" type="radio" value="1" />
       <label for="p_high">High</label>
@@ -42,27 +34,25 @@
       <input id="p_low" name="priority" type="radio" value="3" />
       <label for="p_low">Low</label>
     </p>
-  </div>
-<!--   <div class="field">
-    <%= f.label :may_split %><br>
-    <%= f.text_field :may_split %>
-  </div> -->
+  </div-->
+
+  
+
   <div class="field">
     <%= f.label :estimated_time_required %><br>
     <%= f.number_field :estimated_time_required %>
   </div>
-<!--   <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div> -->
+
+  <div class="field">
+      <%= f.check_box :static %>
+      <%= f.label :static %>
+  </div></br>
+
     <div class="field">
     <%= f.label :start_date %>&nbsp;(optional)<br>
     <%= f.date_field :start_date %>
   </div>
-  <!--div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div-->
+
   <div class="field">
     <%= f.label :start_time %>&nbsp;(optional)<br>
     <%= f.time_field :start_time %>

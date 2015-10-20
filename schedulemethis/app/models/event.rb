@@ -15,6 +15,8 @@ class Event < ActiveRecord::Base
   scope :pending, -> {where("not completed and not dismissed")}
   scope :notcompleted, -> {where("completed IS NOT ?", true)}
   scope :completed, -> {where("completed IS ?", true)}
+  scope :notstatic, -> {where("static IS NOT ?", true)}
+  scope :static, -> {where("static IS ?", true)}
   scope :past, -> {where('start_date < ?', Date.today)}
   # Sort events by start time
   scope :chronological, -> { order(start_time: :asc) }

@@ -21,6 +21,10 @@ ready = function() {
         {
             url: '/events_completed.json',
             color: '#26a69a'
+        },
+        {
+            url: '/events_static.json',
+            color: '#2196f3'
         }],
         dayClick: function(date, jsEvent, view) {
             $('#modal1').openModal();

@@ -6,11 +6,15 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.notcompleted
+    @events = Event.notstatic.notcompleted
   end
 
   def index_completed
-    @events = Event.completed
+    @events = Event.notstatic.completed
+  end
+
+  def index_static
+    @events = Event.static
   end
 
   # GET /events/1
