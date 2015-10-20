@@ -9,31 +9,37 @@ class Event < ActiveRecord::Base
 
   # Scopes
   scope :closest_end_date, -> { order(end_date: :asc) }
-  scope :recently_created, -> { order(created_at: :asc)}
+  scope :recently_created, -> { order(created_at: :desc)}
   scope :on_day, -> (date) { where('DATE(start_date) = ?', date)}
   scope :inactive, -> {where(["scheduled_end < ?", DateTime.now])}
   scope :pending, -> {where("not completed and not dismissed")}
   scope :notcompleted, -> {where("completed IS NOT ?", true)}
+  scope :completed, -> {where("completed IS ?", true)}
+  scope :notstatic, -> {where("static IS NOT ?", true)}
+  scope :static, -> {where("static IS ?", true)}
+  scope :past, -> {where('start_date < ?', Date.today)}
   # Sort events by start time
   scope :chronological, -> { order(start_time: :asc) }
 
   def get_start_datetime
+    user_start_time = "09:00:00"
   	if !self.start_date.nil?
   		return "#{self.start_date.to_s}T#{self.time_hours(self.start_time.hour)}:#{self.time_minutes(self.start_time.min)}:00"
   	end
-    start_times = Event.all.map{|e| e.start_date}
-  	set_date = Date.today.beginning_of_week
+  	set_date = Date.today
   	set_date_str = ""
   	while set_date_str.empty?
-  	  if !start_times.include?(set_date)
-        set_date_str = set_start_time(set_date, "10:30:00")
+      todays_events = Event.on_day(set_date)
+  	  if todays_events.count > 4
+        set_date = set_date.tomorrow
   	  else
-  	    start_times.delete_at(start_times.index(set_date)) if start_times.include?(set_date)
-  	    if !start_times.include?(set_date)
-  	      set_date_str = set_start_time(set_date, "15:30:00")
+  	    last_end_time_event = todays_events.max_by {|e| e.end_time}
+          if last_end_time_event.nil?
+  	        set_date_str = set_start_time(set_date, user_start_time)
+          else
+            set_date_str = set_start_time(set_date, (last_end_time_event.end_time + 1200).strftime("%H:%M:%S")) #20 minutes later
   	    end
   	  end
-  	  set_date = set_date.tomorrow
   	end
   	set_date_str
   end

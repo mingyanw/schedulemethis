@@ -1,5 +1,23 @@
-	<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add Event</a>
-	<div id='calendar'></div>
+<div class="row">
+  <div class="col s2 m2 l2" id="past-tasks"><%= render :partial => "partials/reschedule_bar" %></div>
+  <div class="col s10 m10 l10">
+    <div class="row">
+      <div class="col s3">
+    	  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Add Event</a>
+      </div>
+      <div col="col s9">
+        <a class="btn-floating btn-medium waves-effect waves-light #ef5350"></a>&nbsp;
+        <h6> Completed Tasks </h6>
+        <a class="btn-floating btn-medium waves-effect waves-light red lighten-1"></a>&nbsp;
+        <h6> Incomplete Tasks </h6>
+        <a class="btn-floating btn-medium waves-effect waves-light blue"></a>&nbsp;
+        <h6> Static Events </h6> 
+      </div>
+    </div>
+
+    <div id='calendar'></div>
+  </div>
+</div>
 
 
  

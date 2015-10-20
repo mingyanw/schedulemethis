@@ -14,12 +14,31 @@
 	/*Customize style for Dismiss links*/
 }
 
+h6 {
+	display: inline-block;
+	padding-right: 5%;
+}
+
 #finished {
 	float: left;
 }
 
 #reschedule {
 	float: right;
+}
+
+#past_tasks, h5 {
+	text-overflow:ellipsis;
+	white-space: nowrap; 
+	text-align: center;
+}
+
+.collection .collection-item {
+	padding-bottom: 42px;
+}
+
+#past-tasks{
+	padding-top: 9%;
 }
 
 .dashboard_header{

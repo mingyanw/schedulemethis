@@ -12,8 +12,22 @@ ready = function() {
     $('#calendar').fullCalendar({
         allDaySlot: false,
         height: 600,
+        minTime: "05:00:00",
+        slotDuration: '00:30:00',
         header: { center: 'month,agendaWeek' },
-        events: '/events.json',
+        eventSources: [
+        {
+            url: '/events.json',
+            color: '#ef5350'
+        },
+        {
+            url: '/events_completed.json',
+            color: '#26a69a'
+        },
+        {
+            url: '/events_static.json',
+            color: '#2196f3'
+        }],
         dayClick: function(date, jsEvent, view) {
             $('#modal1').openModal();
         },
@@ -43,7 +57,9 @@ ready = function() {
 
     // Load & display mini calendar on the Dashboard
     $('#mini_calendar').fullCalendar({
+        allDaySlot: false,
         defaultView: 'agendaDay',
+        eventColor: '#26a69a',
         events: '/events.json'
     });
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012200559) do
+ActiveRecord::Schema.define(version: 20151020182817) do
 
   create_table "event_instances", force: :cascade do |t|
     t.integer  "event_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20151012200559) do
     t.datetime "updated_at",                              null: false
     t.integer  "schedule_id"
     t.boolean  "completed",               default: false
+    t.boolean  "static",                  default: false
   end
 
   create_table "friends", force: :cascade do |t|
