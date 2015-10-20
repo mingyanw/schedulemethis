@@ -6,6 +6,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    @events = Event.notcompleted
+  end
+
+  def index_completed
+    @events = Event.completed
   end
 
   # GET /events/1
@@ -94,7 +99,7 @@ class EventsController < ApplicationController
   private
     def all_events
       @nc_events = Event.all.past.notcompleted
-      @events = Event.recently_created
+      @rc_events = Event.recently_created.limit(10)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_event

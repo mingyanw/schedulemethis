@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :events
   get '/reschedule/:id' => 'events#reschedule', as: 'reschedule'
   get '/finished/:id' =>'events#finished', as: 'finished'
+  get '/events_completed' => 'events#index_completed', as: 'completed_events'
   resources :schedules
 
   devise_for :users, path: '', path_names: {sign_in: 'login', sign_out: 'logout'}, controllers: { registrations: "users/registrations"}

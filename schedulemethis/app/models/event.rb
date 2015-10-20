@@ -9,11 +9,12 @@ class Event < ActiveRecord::Base
 
   # Scopes
   scope :closest_end_date, -> { order(end_date: :asc) }
-  scope :recently_created, -> { order(created_at: :asc)}
+  scope :recently_created, -> { order(created_at: :desc)}
   scope :on_day, -> (date) { where('DATE(start_date) = ?', date)}
   scope :inactive, -> {where(["scheduled_end < ?", DateTime.now])}
   scope :pending, -> {where("not completed and not dismissed")}
   scope :notcompleted, -> {where("completed IS NOT ?", true)}
+  scope :completed, -> {where("completed IS ?", true)}
   scope :past, -> {where('start_date < ?', Date.today)}
   # Sort events by start time
   scope :chronological, -> { order(start_time: :asc) }

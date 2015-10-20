@@ -13,8 +13,15 @@ ready = function() {
         allDaySlot: false,
         height: 600,
         header: { center: 'month,agendaWeek' },
-        events: '/events.json',
-        eventColor: '#26a69a',
+        eventSources: [
+        {
+            url: '/events.json',
+            color: '#ef5350'
+        },
+        {
+            url: '/events_completed.json',
+            color: '#26a69a'
+        }],
         dayClick: function(date, jsEvent, view) {
             $('#modal1').openModal();
         },
