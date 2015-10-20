@@ -7,10 +7,10 @@
 					<%= e.short_description %>
 				</p>
 				<%= link_to finished_path(e.id), :remote => true do %>
-					<a class="btn-floating btn-small waves-effect waves-light green"  id="finished"><i class="material-icons">done</i></a>
+					<a class="btn-floating btn-small waves-effect waves-light #ef5350"  id="finished"><i class="material-icons">done</i></a>
 				<% end %>
 				<%= link_to reschedule_path(e.id), :remote => true do %>
-					<a class="btn-floating btn-small waves-effect waves-light red" id="reschedule"><i class="material-icons">replay</i></a>
+					<a class="btn-floating btn-small waves-effect waves-light red lighten-1" id="reschedule"><i class="material-icons">replay</i></a>
 				<% end %>
 			</li>
 		<!-- /div-->
