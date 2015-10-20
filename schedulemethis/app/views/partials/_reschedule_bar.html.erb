@@ -3,11 +3,12 @@
 	<% @nc_events.each do |e| %>
 		<!-- div class="row col s10" id="event_boxes"-->
 			<li class="collection-item black-text">
-				
+				<p id="past_tasks">
+					<%= e.short_description %>
+				</p>
 				<%= link_to finished_path(e.id), :remote => true do %>
 					<i class="material-icons" id="finished">done</i>
 				<% end %>
-				<%= e.short_description %>
 				<%= link_to reschedule_path(e.id), :remote => true do %>
 					<i class="material-icons" id="reschedule">replay</i>
 				<% end %>

@@ -93,7 +93,7 @@ class EventsController < ApplicationController
 
   private
     def all_events
-      @nc_events = Event.all.notcompleted
+      @nc_events = Event.all.past.notcompleted
       @events = Event.recently_created
     end
     # Use callbacks to share common setup or constraints between actions.
