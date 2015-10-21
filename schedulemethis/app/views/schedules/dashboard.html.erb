@@ -12,10 +12,10 @@
   <div class="col s6">
     <!-- Side Panel  -->
         <!-- Display Today's Tasks -->
-    	<% if @remaining_events.nil? %>
-		  <h4> You finished all your tasks for today! To schedule a new task, click here <%= link_to "Schedule an event", events_path %> </h4>
+       	<h4 class="dashboard_header">Today's Remaining Tasks</h4>
+    	<% if !@remaining_events.present? %>
+		  <p> You finished all your tasks for today! To schedule a new task,  <%= link_to "click here", events_path %> </p>
 		<% else %>
-			<h4 class="dashboard_header">Today's Remaining Tasks</h4>
 			<ol id="dash_list">
 			<% @remaining_events.each do |event| %>
 				<div class="row remaining-event" style="margin-bottom: 0px;">
@@ -32,10 +32,22 @@
 			</ol>
 		<% end %>
 
+		<br/>
+
 		<!-- Advanced functionality -->
 		<h4>Preferences</h4>
-		<a class="waves-effect waves-light btn pref-btn" href="/preferences"><i class="material-icons left">mood</i>Update Scheduler Preferences</a>
-
+		<a class="waves-effect waves-light btn pref-btn modal-trigger" href="#modal_pref"><i class="material-icons left">mood</i>Update Scheduler Preferences</a>
   </div> <!--Closes Side Panel -->
-
 </div>
+
+ <!-- Modal Structure -->
+<div id="modal_pref" class="modal">
+	<div class="modal-content">
+	  <h4>Looking for Preferences?</h4>
+	  <p>This is still a work in progress feature - check back soon! </p>
+	</div>
+	<div class="modal-footer">
+	  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Okay I got it!</a>
+	</div>
+</div>
+
