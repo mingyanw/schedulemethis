@@ -29,20 +29,32 @@ class Event < ActiveRecord::Base
     end
     set_date = Date.today
     set_date_str = ""
-    while set_date_str.empty?
-      todays_events = Event.on_day(set_date)
-      if todays_events.count > 4
-        set_date = set_date.tomorrow
-  	  else
-  	      last_end_time_event = todays_events.max_by {|e| e.end_time or "00:00:00"}
-          if last_end_time_event.nil?
-  	        set_date_str = set_start_time(set_date, user_start_time)
-          else
-            set_date_str = set_start_time(set_date, (last_end_time_event.end_time + 1200).strftime("%H:%M:%S")) #20 minutes later
-  	      end
-  	  end
+    events_per_day = count_events_per_day
+    days_from_now_to_place_event = events_per_day.each_with_index.min.last
+    while days_from_now_to_place_event > 0
+      set_date = set_date.tomorrow
+      days_from_now_to_place_event -= 1
+    end
+    todays_events = Event.on_day(set_date)
+  	last_end_time_event = todays_events.max_by {|e| e.end_time or "00:00:00"}
+    if last_end_time_event.nil?
+  	  set_date_str = set_start_time(set_date, user_start_time)
+    else
+      set_date_str = set_start_time(set_date, (last_end_time_event.end_time + 1200).strftime("%H:%M:%S")) #20 minutes later
   	end
     set_date_str
+  end
+
+  def count_events_per_day
+    day = Date.today
+    day_index = Date.today.wday
+    arr_events = []
+    while day_index < 7
+      arr_events << Event.on_day(day).count
+      day = day.tomorrow
+      day_index += 1
+    end
+    arr_events
   end
 
   def time_minutes(mins)
