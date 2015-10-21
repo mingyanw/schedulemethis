@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   belongs_to :schedule
   has_many :event_instances
   has_one :event_recurrence
+  belongs_to :user
 
   # Required Fields
   validates_presence_of :short_description, :estimated_time_required, :priority

@@ -9,16 +9,16 @@ class EventsController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_url
     else
-      @events = Event.notstatic.notcompleted
+      @events = current_user.events.notstatic.notcompleted
     end
   end
 
   def index_completed
-    @events = Event.notstatic.completed
+    @events = current_user.events.notstatic.completed
   end
 
   def index_static
-    @events = Event.static
+    @events = current_user.events.static
   end
 
   # GET /events/1
@@ -70,6 +70,7 @@ class EventsController < ApplicationController
 
         @event.end_time = @event.start_time + (60 * @event.estimated_time_required) if @event.start_time
         @event.schedule = @mySchedule
+        @event.user_id = current_user.id
         @event.save
       respond_to do |format|
         format.js { flash[:notice] = "Event #{@event.short_description} was created"}
@@ -106,8 +107,8 @@ class EventsController < ApplicationController
 
   private
     def all_events
-      @nc_events = Event.all.past.notcompleted.notstatic
-      @rc_events = Event.recently_created.limit(10)
+      @nc_events = current_user.events.past.notcompleted.notstatic
+      @rc_events = current_user.events.recently_created.limit(10)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_event
