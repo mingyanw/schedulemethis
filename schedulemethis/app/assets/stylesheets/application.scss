@@ -18,12 +18,21 @@ $primary-color: #3a87ad !default;
 	padding-right: 30px;
 }
 
+/*Adds some padding to the recently created events tab*/
+#events{
+	padding-bottom: 30px;
+}
+
+#recent_events_header{
+	margin-top: 0px; 
+	text-align: left;
+}
+
 h2 {
 	font-size: 250%;
 }
 
 #event-form {
-	background-color: #eeeeee;
 	padding: 20px;
 	border-radius: 20px;
 }
@@ -90,6 +99,10 @@ label {
 /*.edit-btn{
 	color: blue;
 }*/
+
+.button-div{
+	margin-bottom: 20px;
+}
 
 .back-btn{
 	background-color: gray;

@@ -1,72 +1,81 @@
-<!-- <p id="notice"><%= notice %></p> -->
+<!-- Wrap everything in a container -->
+<div class="card-panel blue-grey lighten-5 col s8 offset-s2 z-depth-3" id="event_show">
+  <h4>Task: <%= @event.short_description %></h4>
 
-<h4>Task: <%= @event.short_description %></h4>
+  <!-- Only display if applicable/attribute is defined -->
+  <% if @event.description.present? %>
+    <p>
+      <strong>About Task:</strong>
+      <%= @event.description %>
+    </p>
+  <% end %>
 
-<!-- Only display if applicable/attribute is defined -->
-<% if @event.description.present? %>
   <p>
-    <strong>About Task:</strong>
-    <%= @event.description %>
+    <strong>Priority:</strong>
+    <%= @event.priority_rating %>
   </p>
-<% end %>
 
-<p>
-  <strong>Priority:</strong>
-  <%= @event.priority_rating %>
-</p>
-
-<p>
-  <strong>Estimated time required:</strong>
-  <%= @event.estimated_time_required %> minutes
-</p>
-
-<p>
-  <strong>Scheduled for: </strong><br/>
-  <%= @event.start_date.strftime('%A, %B %d, %Y') %> <br/>
-  <%= @event.start_time.strftime('%I:%M %p') %> - <%= @event.end_time.strftime('%I:%M %p') %>
-</p>
-
-<!-- Optional stuff - only show if present -->
-<% if @event.end_date.present? %>
   <p>
-    <strong>End date:</strong>
-    <%= @event.end_date %>
+    <strong>Estimated time required:</strong>
+    <%= @event.estimated_time_required %> minutes
   </p>
-<% end %>
 
-<% if @event.start_time_flex_amount.present? %>
   <p>
-    <strong>Start time flex amount:</strong>
-    <%= @event.start_time_flex_amount %>
+    <strong>Scheduled for: </strong><br/>
+    <%= @event.start_date.strftime('%A, %B %d, %Y') %> <br/>
+    <%= @event.start_time.strftime('%I:%M %p') %> - <%= @event.end_time.strftime('%I:%M %p') %>
   </p>
-<% end %>
 
-<% if @event.end_time_flex_amount.present? %>
-  <p>
-    <strong>End time flex amount:</strong>
-    <%= @event.end_time_flex_amount %>
-  </p>
-<% end %>
+  <!-- Optional stuff - only show if present -->
+  <% if @event.end_date.present? %>
+    <p>
+      <strong>End date:</strong>
+      <%= @event.end_date %>
+    </p>
+  <% end %>
 
-<% if @event.may_split.present? %>
-  <p>
-    <strong>May split:</strong>
-    <%= @event.may_split %>
-  </p>
-<% end %>
+  <% if @event.start_time_flex_amount.present? %>
+    <p>
+      <strong>Start time flex amount:</strong>
+      <%= @event.start_time_flex_amount %>
+    </p>
+  <% end %>
 
-<% if @event.location.present? %>
-  <p>
-    <strong>Location:</strong>
-    <%= @event.location %>
-  </p>
-<% end %>
+  <% if @event.end_time_flex_amount.present? %>
+    <p>
+      <strong>End time flex amount:</strong>
+      <%= @event.end_time_flex_amount %>
+    </p>
+  <% end %>
 
-<!-- Link to Edit and Back Buttons -->
-<%= link_to edit_event_path(@event) do%>
-  <button class="btn btn-default edit-btn">Edit</button>
-<% end %>
+  <% if @event.may_split.present? %>
+    <p>
+      <strong>May split:</strong>
+      <%= @event.may_split %>
+    </p>
+  <% end %>
 
-<%= link_to events_path do %>
-  <button class="btn btn-default back-btn">Back</button>
-<% end %>
+  <% if @event.location.present? %>
+    <p>
+      <strong>Location:</strong>
+      <%= @event.location %>
+    </p>
+  <% end %>
+
+  <div class="button-div">
+    <!-- Link to Edit, Delete, and Back Buttons -->
+    <%= link_to edit_event_path(@event) do%>
+      <button class="btn btn-default edit-btn">Edit</button>
+    <% end %>
+
+    <%= link_to event_path(@event), method: :delete, class: "span" do %>
+      <button class="btn btn-default red">Delete</button>
+    <% end %>
+
+    <%= link_to events_path do %>
+      <button class="btn btn-default back-btn">Back</button>
+    <% end %>
+
+  </div>
+
+</div>
