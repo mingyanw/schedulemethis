@@ -106,7 +106,7 @@ class EventsController < ApplicationController
 
   private
     def all_events
-      @nc_events = Event.all.past.notcompleted
+      @nc_events = Event.all.past.notcompleted.notstatic
       @rc_events = Event.recently_created.limit(10)
     end
     # Use callbacks to share common setup or constraints between actions.
