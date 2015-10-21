@@ -24,11 +24,14 @@ class Event < ActiveRecord::Base
 
   def get_start_datetime
     user_start_time = "09:00:00"
-    if !self.start_date.nil?
+    if !self.start_date.nil? && !self.start_time.nil?
   	  return "#{self.start_date.to_s}T#{self.time_hours(self.start_time.hour)}:#{self.time_minutes(self.start_time.min)}:00"
     end
     if !self.start_time.nil? && self.start_date.nil?
       return find_day_with_given_time 
+    end
+    if !self.start_date.nil? && self.start_time.nil?
+      return find_time_with_given_day
     end
   	set_date = Date.today
   	set_date_str = ""
@@ -37,16 +40,31 @@ class Event < ActiveRecord::Base
   	  if todays_events.count > 4
         set_date = set_date.tomorrow
   	  else
-  	    last_end_time_event = todays_events.max_by {|e| e.end_time}
+  	      last_end_time_event = todays_events.max_by {|e| e.end_time}
           if last_end_time_event.nil?
   	        set_date_str = set_start_time(set_date, user_start_time)
           else
             set_date_str = set_start_time(set_date, (last_end_time_event.end_time + 1200).strftime("%H:%M:%S")) #20 minutes later
-  	    end
+  	      end
   	  end
   	end
   	set_date_str
   end
+
+  def find_time_with_given_day
+    user_start_time = "09:00:00"
+    set_date_str = ""
+    set_date = self.start_date
+    todays_events = Event.on_day(set_date)
+    last_end_time_event = todays_events.max_by {|e| e.end_time}
+    if last_end_time_event.end_time.nil?
+      set_date_str = set_start_time(set_date, user_start_time)
+    else
+      set_date_str = set_start_time(set_date, (last_end_time_event.end_time + 1200).strftime("%H:%M:%S")) #20 minutes later
+    end
+    set_date_str
+  end
+
 
   def find_day_with_given_time
     set_date_str = ""
