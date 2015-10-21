@@ -12,10 +12,10 @@
   <div class="col s6">
     <!-- Side Panel  -->
         <!-- Display Today's Tasks -->
-    	<% if @remaining_events.nil? %>
-		  <h4> You finished all your tasks for today! To schedule a new task, click here <%= link_to "Schedule an event", events_path %> </h4>
+       	<h4 class="dashboard_header">Today's Remaining Tasks</h4>
+    	<% if !@remaining_events.present? %>
+		  <p> You finished all your tasks for today! To schedule a new task,  <%= link_to "click here", events_path %> </p>
 		<% else %>
-			<h4 class="dashboard_header">Today's Remaining Tasks</h4>
 			<ol id="dash_list">
 			<% @remaining_events.each do |event| %>
 				<div class="row remaining-event" style="margin-bottom: 0px;">
@@ -31,6 +31,8 @@
 			<% end %>
 			</ol>
 		<% end %>
+
+		<br/>
 
 		<!-- Advanced functionality -->
 		<h4>Preferences</h4>
