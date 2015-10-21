@@ -18,14 +18,18 @@ class Event < ActiveRecord::Base
   scope :notstatic, -> {where("static IS NOT ?", true)}
   scope :static, -> {where("static IS ?", true)}
   scope :past, -> {where('start_date < ?', Date.today)}
+  scope :at_time_day, -> (date, time) {where('Date(start_date) = ? AND ? >= start_time AND ? <= end_time', date, time, time)} 
   # Sort events by start time
   scope :chronological, -> { order(start_time: :asc) }
 
   def get_start_datetime
     user_start_time = "09:00:00"
-  	if !self.start_date.nil?
-  		return "#{self.start_date.to_s}T#{self.time_hours(self.start_time.hour)}:#{self.time_minutes(self.start_time.min)}:00"
-  	end
+    if !self.start_date.nil?
+  	  return "#{self.start_date.to_s}T#{self.time_hours(self.start_time.hour)}:#{self.time_minutes(self.start_time.min)}:00"
+    end
+    if !self.start_time.nil? && self.start_date.nil?
+      return find_day_with_given_time 
+    end
   	set_date = Date.today
   	set_date_str = ""
   	while set_date_str.empty?
@@ -44,6 +48,20 @@ class Event < ActiveRecord::Base
   	set_date_str
   end
 
+  def find_day_with_given_time
+    set_date_str = ""
+    set_date = Date.today
+    while set_date_str.empty?
+      events_at_same_time = Event.at_time_day(set_date, self.start_time)
+      if events_at_same_time.count == 0 
+        set_date_str = set_start_time(set_date, self.start_time)
+      end
+      set_date = set_date.tomorrow
+    end
+    set_date_str
+  end
+
+
   def time_minutes(mins)
     return "00" if mins == 0
     mins
@@ -57,7 +75,7 @@ class Event < ActiveRecord::Base
   def set_start_time(set_date, time)
     self.start_date = set_date
     self.start_time = time
-  	self.save
+    self.save
   	set_date_str = set_date.to_s + "T" + time
   end
 
