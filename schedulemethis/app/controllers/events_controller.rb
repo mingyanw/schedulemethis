@@ -6,7 +6,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.notstatic.notcompleted
+    if !user_signed_in?
+      redirect_to new_user_session_url
+    else
+      @events = Event.notstatic.notcompleted
+    end
   end
 
   def index_completed

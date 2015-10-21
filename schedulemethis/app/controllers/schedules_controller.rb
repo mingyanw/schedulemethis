@@ -26,8 +26,12 @@ class SchedulesController < ApplicationController
 
   #Calendar View
   def calendar
-    @events = Event.all
-    @event = Event.new
+    if !user_signed_in?
+      redirect_to new_user_session_url
+    else
+      @events = Event.all
+      @event = Event.new
+    end
   end
 
   #Agenda View 

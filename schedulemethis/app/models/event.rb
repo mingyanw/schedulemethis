@@ -33,11 +33,12 @@ class Event < ActiveRecord::Base
     if !self.start_date.nil? && self.start_time.nil?
       return find_time_with_given_day
     end
-  	set_date = Date.today
-  	set_date_str = ""
-  	while set_date_str.empty?
+
+    set_date = Date.today
+    set_date_str = ""
+    while set_date_str.empty?
       todays_events = Event.on_day(set_date)
-  	  if todays_events.count > 4
+      if todays_events.count > 4
         set_date = set_date.tomorrow
   	  else
   	      last_end_time_event = todays_events.max_by {|e| e.end_time}
@@ -48,7 +49,7 @@ class Event < ActiveRecord::Base
   	      end
   	  end
   	end
-  	set_date_str
+    set_date_str
   end
 
   def find_time_with_given_day
