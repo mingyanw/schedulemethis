@@ -1,6 +1,19 @@
-<h1>Editing Event</h1>
+<!-- Wrap everything in a container -->
+<div class="card-panel blue-grey lighten-5 col s8 offset-s2 z-depth-3" id="event_show">
+	<h4>Editing Event</h4>
 
-<%= render 'form' %>
+	<%= render 'form' %>
+  
+  	<br />
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+	<div class="button-div" style="text-align:center">
+		<!-- Link to Edit and Back Buttons -->
+		<%= link_to @event do%>
+		  <button class="btn btn-default">Show</button>
+		<% end %>
+		<%= link_to events_path do %>
+		  <button class="btn btn-default back-btn">Back</button>
+		<% end %>
+	</div>
+
+</div>
