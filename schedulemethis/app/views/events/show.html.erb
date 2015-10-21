@@ -63,14 +63,19 @@
   <% end %>
 
   <div class="button-div">
-    <!-- Link to Edit and Back Buttons -->
+    <!-- Link to Edit, Delete, and Back Buttons -->
     <%= link_to edit_event_path(@event) do%>
       <button class="btn btn-default edit-btn">Edit</button>
+    <% end %>
+
+    <%= link_to event_path(@event), method: :delete, class: "span" do %>
+      <button class="btn btn-default red">Delete</button>
     <% end %>
 
     <%= link_to events_path do %>
       <button class="btn btn-default back-btn">Back</button>
     <% end %>
+
   </div>
 
 </div>
