@@ -73,7 +73,7 @@ class Event < ActiveRecord::Base
     while set_date_str.empty?
       events_at_same_time = Event.at_time_day(set_date, self.start_time)
       if events_at_same_time.count == 0 
-        set_date_str = set_start_time(set_date, self.start_time)
+        set_date_str = set_start_time(set_date, self.start_time.to_s)
       end
       set_date = set_date.tomorrow
     end
