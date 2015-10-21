@@ -7,14 +7,15 @@ class ApplicationController < ActionController::Base
 	before_filter :pass_in_events_for_footer
 	def pass_in_events_for_footer
 		# If user is signed in
-		@nc_events = Event.all.past.notcompleted
+		
 		if current_user
+			@nc_events = current_user.events.past.notcompleted.notstatic
 			# Check if the user has a schedule, and if so, pull out those events
 		    @schedule = Schedule.all.where(user_id: current_user.id).first
 	      	@events = nil
 	    	if !@schedule.nil?
 	        	# All Events in the User's Schedule 
-	        	@events = Event.all.where(schedule_id: @schedule.id)
+	        	@events = current_user.events.where(schedule_id: @schedule.id)
 			end
 		end
 	end

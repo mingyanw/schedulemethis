@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   belongs_to :schedule
   has_many :event_instances
   has_one :event_recurrence
+  belongs_to :user
 
   # Required Fields
   validates_presence_of :short_description, :estimated_time_required, :priority
@@ -18,30 +19,43 @@ class Event < ActiveRecord::Base
   scope :notstatic, -> {where("static IS NOT ?", true)}
   scope :static, -> {where("static IS ?", true)}
   scope :past, -> {where('start_date < ?', Date.today)}
+  scope :at_time_day, -> (date, time) {where('Date(start_date) = ? AND ? >= start_time AND ? <= end_time', date, time, time)} 
   # Sort events by start time
   scope :chronological, -> { order(start_time: :asc) }
 
   def get_start_datetime
     user_start_time = "09:00:00"
     if !self.start_date.nil? && !self.start_time.nil?
-      return "#{self.start_date.to_s}T#{self.time_hours(self.start_time.hour)}:#{self.time_minutes(self.start_time.min)}:00"
+  	  return "#{self.start_date.to_s}T#{self.time_hours(self.start_time.hour)}:#{self.time_minutes(self.start_time.min)}:00"
     end
     set_date = Date.today
     set_date_str = ""
-    while set_date_str.empty?
-      todays_events = Event.on_day(set_date)
-      if todays_events.count > 4
-        set_date = set_date.tomorrow
-      else
-  	last_end_time_event = todays_events.max_by {|e| e.end_time}
-        if last_end_time_event.nil?
-  	  set_date_str = set_start_time(set_date, user_start_time)
-        else
-          set_date_str = set_start_time(set_date, (last_end_time_event.end_time + 1200).strftime("%H:%M:%S")) #20 minutes later
-  	end
-      end
+    events_per_day = count_events_per_day
+    days_from_now_to_place_event = events_per_day.each_with_index.min.last
+    while days_from_now_to_place_event > 0
+      set_date = set_date.tomorrow
+      days_from_now_to_place_event -= 1
     end
+    todays_events = Event.on_day(set_date)
+  	last_end_time_event = todays_events.max_by {|e| e.end_time or "00:00:00"}
+    if last_end_time_event.nil?
+  	  set_date_str = set_start_time(set_date, user_start_time)
+    else
+      set_date_str = set_start_time(set_date, (last_end_time_event.end_time + 1200).strftime("%H:%M:%S")) #20 minutes later
+  	end
     set_date_str
+  end
+
+  def count_events_per_day
+    day = Date.today
+    day_index = Date.today.wday
+    arr_events = []
+    while day_index < 7
+      arr_events << Event.on_day(day).count
+      day = day.tomorrow
+      day_index += 1
+    end
+    arr_events
   end
 
   def time_minutes(mins)
@@ -57,7 +71,7 @@ class Event < ActiveRecord::Base
   def set_start_time(set_date, time)
     self.start_date = set_date
     self.start_time = time
-  	self.save
+    self.save
   	set_date_str = set_date.to_s + "T" + time
   end
 

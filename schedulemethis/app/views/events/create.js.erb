@@ -1,4 +1,4 @@
-$('#events').html("<%= j (render @events) %>");
+$('#events').html("<%= j (render @rc_events) %>");
 $('#event-form').slideUp(350);
 $("#chip-notice").css("display", "list-item");
 $("#notice").html("<%=j flash[:notice] %>");

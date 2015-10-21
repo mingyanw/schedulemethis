@@ -9,16 +9,16 @@ class EventsController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_url
     else
-      @events = Event.notstatic.notcompleted
+      @events = current_user.events.notstatic.notcompleted
     end
   end
 
   def index_completed
-    @events = Event.notstatic.completed
+    @events = current_user.events.notstatic.completed
   end
 
   def index_static
-    @events = Event.static
+    @events = current_user.events.static
   end
 
   # GET /events/1
@@ -70,6 +70,7 @@ class EventsController < ApplicationController
 
         @event.end_time = @event.start_time + (60 * @event.estimated_time_required) if @event.start_time
         @event.schedule = @mySchedule
+        @event.user_id = current_user.id
         @event.save
       respond_to do |format|
         format.js { flash[:notice] = "Event #{@event.short_description} was created"}
@@ -106,8 +107,8 @@ class EventsController < ApplicationController
 
   private
     def all_events
-      @nc_events = Event.all.past.notcompleted
-      @rc_events = Event.recently_created.limit(10)
+      @nc_events = current_user.events.past.notcompleted.notstatic
+      @rc_events = current_user.events.recently_created.limit(10)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -116,6 +117,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:short_description, :description, :start_date, :end_date, :start_time, :end_time, :start_time_flex_amount, :end_time_flex_amount, :priority, :may_split, :estimated_time_required, :location)
+      params.require(:event).permit(:short_description, :description, :start_date, :end_date, :start_time, :end_time, :start_time_flex_amount, :end_time_flex_amount, :priority, :may_split, :estimated_time_required, :location, :static, :completed)
     end
 end

@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
       @events = nil
       if !@schedule.nil?
         # All Events in the User's Schedule 
-        @events = Event.all.where(schedule_id: @schedule.id)
+        @events = current_user.events.where(schedule_id: @schedule.id)
         # Today's Event 
         @todays_events = @events.eventsThisWeek.first;
         @remaining_events = @events.remainingEventsToday;
@@ -29,7 +29,7 @@ class SchedulesController < ApplicationController
     if !user_signed_in?
       redirect_to new_user_session_url
     else
-      @events = Event.all
+      @events = current_user.events
       @event = Event.new
     end
   end
@@ -37,7 +37,7 @@ class SchedulesController < ApplicationController
   #Agenda View 
   def agenda
     # Pass in an array of days of the week and the events on those days
-    @this_week_events = Event.eventsThisWeek;
+    @this_week_events = current_user.events.eventsThisWeek;
   end
 
   # GET /schedules/1

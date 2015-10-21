@@ -59,8 +59,21 @@ ready = function() {
     $('#mini_calendar').fullCalendar({
         allDaySlot: false,
         defaultView: 'agendaDay',
-        eventColor: '#26a69a',
-        events: '/events.json'
+        height: 600,
+        minTime: "05:00:00",
+        eventSources: [
+        {
+            url: '/events.json',
+            color: '#ef5350'
+        },
+        {
+            url: '/events_completed.json',
+            color: '#26a69a'
+        },
+        {
+            url: '/events_static.json',
+            color: '#2196f3'
+        }]
     });
 
     $(document).delegate("#finished", "click", function(){
